@@ -19,5 +19,7 @@ namespace Data
         public DbSet<RepairType> RepairTypes { get; set; }
         public DbSet<CarBrand> Brands { get; set; }
         public DbSet<RepairShop> RepairShops { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Problem> Problems { get; set; }
     }
 }
