@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarBusiness.cs" />
-    <Compile Include="ProblemBusiness.cs" />
     <Compile Include="RepairTypeBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

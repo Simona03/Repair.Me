@@ -38,6 +38,7 @@ namespace FixMeApplication.Controllers
         // GET: RepairTypes/Create
         public ActionResult Create()
         {
+
             return View();
         }
 

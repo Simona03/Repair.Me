@@ -193,10 +193,21 @@
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RepairShopsController.cs" />
     <Compile Include="Controllers\RepairTypesController.cs" />
+    <Compile Include="DataSeeder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902261433426_InitialCreate.cs" />
+    <Compile Include="Migrations\201902261433426_InitialCreate.Designer.cs">
+      <DependentUpon>201902261433426_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903061304364_Initial.cs" />
+    <Compile Include="Migrations\201903061304364_Initial.Designer.cs">
+      <DependentUpon>201903061304364_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -260,16 +271,22 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\RepairTypes\Create.cshtml" />
-    <Content Include="Views\RepairTypes\Delete.cshtml" />
-    <Content Include="Views\RepairTypes\Details.cshtml" />
-    <Content Include="Views\RepairTypes\Edit.cshtml" />
-    <Content Include="Views\RepairTypes\Index.cshtml" />
     <Content Include="Views\Cars\Create.cshtml" />
     <Content Include="Views\Cars\Delete.cshtml" />
     <Content Include="Views\Cars\Details.cshtml" />
     <Content Include="Views\Cars\Edit.cshtml" />
     <Content Include="Views\Cars\Index.cshtml" />
+    <Content Include="Views\RepairTypes\Create.cshtml" />
+    <Content Include="Views\RepairTypes\Delete.cshtml" />
+    <Content Include="Views\RepairTypes\Details.cshtml" />
+    <Content Include="Views\RepairTypes\Edit.cshtml" />
+    <Content Include="Views\RepairTypes\Index.cshtml" />
+    <Content Include="Views\RepairShops\Create.cshtml" />
+    <Content Include="Views\RepairShops\Delete.cshtml" />
+    <Content Include="Views\RepairShops\Details.cshtml" />
+    <Content Include="Views\RepairShops\Edit.cshtml" />
+    <Content Include="Views\RepairShops\Index.cshtml" />
+    <Content Include="Views\RepairShops\Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +313,14 @@
       <Project>{5688cd8e-876d-4451-9f43-beca5c09c963}</Project>
       <Name>Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902261433426_InitialCreate.resx">
+      <DependentUpon>201902261433426_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903061304364_Initial.resx">
+      <DependentUpon>201903061304364_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

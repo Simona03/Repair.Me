@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Data.RepairShop>
+
+@{
+    ViewBag.Title = "Map";
+    ViewBag.labels = "";
+    foreach (var item in Model)
+    {
+        ViewBag.labels += "'" + item.Name + "', ";
+    }
+
+    ViewBag.locations = "";
+    foreach (var item in Model)
+    {
+        var addr = item.Address.Split(',').ToArray();
+
+        ViewBag.locations +=
+            "{ lat: " + addr[0] + ", lng: " + addr[1] + "}, ";
+    }
+    ViewBag.ids = "";
+    foreach (var item in Model)
+    {
+        ViewBag.ids += item.Id + ", ";
+    }
+
+    ViewBag.Repairs = "";
+    foreach (var item in Model)
+    {
+        ViewBag.Repairs += "[";
+        foreach (var item2 in item.RepairTypes)
+        {
+            ViewBag.Repairs += item2.Id+", ";
+        }
+        ViewBag.Repairs += "],";
+    }
+
+}
+
+<h2>Map</h2>
+<div id="fullmap"></div>
+
+<script type="text/javascript">
+
+draw_data = [];
+
+    labels = [
+    @Html.Raw(ViewBag.labels)
+	];
+
+    locations = [
+        @Html.Raw(ViewBag.locations)
+	];
+
+
+    locations_id = [
+        @Html.Raw(ViewBag.ids)
+    ];
+
+    repairs = [
+        @Html.Raw(ViewBag.Repairs)
+    ];
+
+
+var map = null;
+var main_lat, main_lng, main_location;
+var markerCluster = null;
+var chosen_locations = [];
+var chosen_coord = [];
+var locations_cnt = 1;
+var show_route = false;
+    var current_location = null;
+    var problem_id = @Html.Raw(ViewBag.MapId);
+
+function initMap() {
+    var latitude = parseFloat("42.5158986"); //latitude for Bulgaria
+    var longitude = parseFloat("27.4648856"); // Longitude for Bulgaria
+	var latlngPos = new google.maps.LatLng(latitude, longitude);
+
+	var mainMapOptions = {
+		zoom: 13,
+		center: latlngPos,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		zoomControlOptions: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.LARGE
+		},
+		scrollwheel: false,
+        draggable: true
+	};
+
+	map = new google.maps.Map(document.getElementById("fullmap"), mainMapOptions);
+
+
+    var markers = locations.map(function (location, i) {
+        if (repairs[i].indexOf(problem_id)!=-1) {
+            var marker = new google.maps.Marker({
+                title: labels[i],
+                location_id: locations_id[i],
+                lat: location.lat,
+                lng: location.lng,
+                position: location,
+                icon: location.marker,
+                map: map
+            });
+        }
+
+
+		return marker;
+	});
+
+
+}
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVG1P_NDn5GVDajfnVNgLtPdHv-vzID0Q&callback=initMap"></script>

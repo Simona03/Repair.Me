@@ -20,6 +20,11 @@ namespace Data
         public DbSet<CarBrand> Brands { get; set; }
         public DbSet<RepairShop> RepairShops { get; set; }
         public DbSet<Car> Cars { get; set; }
-        public DbSet<Problem> Problems { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
